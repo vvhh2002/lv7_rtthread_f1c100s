@@ -1,0 +1,3 @@
+
+SConscript('./mksunxi/SConscript')
+SConscript('./spl/SConscript')

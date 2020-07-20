@@ -1,0 +1,4 @@
+   text	   data	    bss	    dec	    hex	filename
+ 252013	   3668	2176608	2432289	 251d21	h:/07.RT-Thread/rt-thread/bsp/allwinner_tina/rtthread.elf
+BuildTime:2020-07-18 22:24:21.621000
+-------------------------------------------------------

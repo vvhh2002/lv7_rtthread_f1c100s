@@ -1,0 +1,43 @@
+import os
+
+BUILD = 'release'
+# BUILD = 'debug'
+
+DEVICE    = ' -mcpu=arm926ej-s -ffunction-sections -fdata-sections'
+ASFLAGS   = DEVICE + ' -c -x assembler-with-cpp'
+CCFLAGS   = DEVICE + ' -Wall'
+CXXFLAGS  = CCFLAGS
+LINKFLAGS = DEVICE + ' -nostartfiles -Wl,--gc-sections,-Map=boot.map,-cref -Tspl/link.ld'
+
+if BUILD == 'debug':
+    CCFLAGS += ' -O0 -gdwarf-2'
+    ASFLAGS += ' -gdwarf-2'
+else:
+    CCFLAGS += ' -O0'
+
+env = Environment(
+    tools = ['mingw'],
+    AS = 'arm-none-eabi-gcc', ASFLAGS = ASFLAGS,
+    CC = 'arm-none-eabi-gcc', CCFLAGS = CCFLAGS,
+    CXX = 'arm-none-eabi-gcc', CXXFLAGS = CXXFLAGS,
+    AR = 'arm-none-eabi-ar',  ARFLAGS = '-rc',
+    LINK = 'arm-none-eabi-g++', LINKFLAGS = LINKFLAGS
+)
+
+env.PrependENVPath('PATH', r'../tools/gcc-arm-none-eabi/bin')
+#os.environ['PATH'] = r'../tools/gcc-arm-none-eabi/bin' + os.environ['PATH']
+
+src  = Glob('src/*.c')
+src += Glob('src/*.S')
+
+env.Program('spl.elf', src, CPPPATH='src')
+
+env.AddPostAction('spl.elf', 'arm-none-eabi-objdump -D -S $TARGET > boot.asm\n')
+env.AddPostAction('spl.elf', 'arm-none-eabi-objcopy -O binary $TARGET boot.bin\n')
+env.AddPostAction('spl.elf', 'arm-none-eabi-size $TARGET\n')
+env.AddPostAction('spl.elf', './mksunxi/mksunxi boot.bin')
+
+env.Clean('spl.elf', '../boot.bin')
+env.Clean('spl.elf', '../boot.asm')
+env.Clean('spl.elf', '../boot.map')
+env.Clean('spl.elf', '../.sconsign.dblite')

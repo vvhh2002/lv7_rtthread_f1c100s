@@ -1,0 +1,27 @@
+{ 
+    "search.exclude": { 
+        "**/*.o":true, 
+        "**/*.su":true, 
+        "**/*.cmd":true,
+        "**/*.pyc":true,
+        "**/*.git*":true,
+        "**/*.yml*":true,
+        "bsp/[b-z]*":true,
+        "bsp/a[b-k]*":true,
+        "bsp/a[m-z]*":true,
+        "bsp/C*":true,
+    },
+
+    "files.exclude": { 
+        "**/*.o":true, 
+        "**/*.su":true, 
+        "**/*.cmd":true,
+        "**/*.pyc":true,
+        "**/*.git*":true,
+        "**/*.yml*":true,
+        "bsp/[b-z]*":true,
+        "bsp/a[b-k]*":true,
+        "bsp/a[m-z]*":true,
+        "bsp/C*":true,
+     }
+}

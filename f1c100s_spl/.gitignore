@@ -1,0 +1,9 @@
+*.o
+*.exe
+*.asm
+*.bin
+*.map
+*.elf
+*.pyc
+.sconsign.dblite
+mksunxi/mksunxi
