@@ -156,7 +156,7 @@
 #define LV_COLOR_DEPTH 32
 #define LV_HOR_RES 800
 #define LV_VER_RES 480
-#define LV_DPI 50
+#define LV_DPI 130
 #define LITTLEVGL2RTT_USING_DEMO
 
 /* RT-Thread online packages */
