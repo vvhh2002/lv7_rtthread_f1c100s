@@ -33,8 +33,13 @@ typedef int16_t lv_coord_t;
 #ifndef LV_VER_RES
 #define LV_VER_RES          (480)
 #endif
+
+
+/* Dot Per Inch: used to initialize default sizes.
+ * E.g. a button with width = LV_DPI / 2 -> half inch wide
+ * (Not so important, you can adjust it to modify default sizes and spaces)*/
 #ifndef LV_DPI
-#define LV_DPI              (50)
+#define LV_DPI              (50)   /*[px]*/
 #endif
 
 /* Color depth:
@@ -64,10 +69,6 @@ typedef int16_t lv_coord_t;
  * Can be changed in the display driver (`lv_disp_drv_t`).*/
 #define LV_DISP_DEF_REFR_PERIOD      30      /*[ms]*/
 
-/* Dot Per Inch: used to initialize default sizes.
- * E.g. a button with width = LV_DPI / 2 -> half inch wide
- * (Not so important, you can adjust it to modify default sizes and spaces)*/
-#define LV_DPI              130     /*[px]*/
 
 /* The the real width of the display changes some default values:
  * default object sizes, layout of examples, etc.
