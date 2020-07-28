@@ -142,8 +142,8 @@ static void lvgl_rtt_tick_run(void *p)
 {
     while (1)
     {
-        lv_tick_inc(1);
-        rt_thread_delay(1);
+        lv_tick_inc(5);
+        rt_thread_mdelay(5);
     }
 }
 
